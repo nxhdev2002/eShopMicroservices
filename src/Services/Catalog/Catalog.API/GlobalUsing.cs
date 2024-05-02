@@ -6,3 +6,4 @@ global using Catalog.API.Models;
 global using Marten;
 global using Catalog.API.Products.CreateProduct;
 global using Catalog.API.Exceptions;
+global using FluentValidation;
