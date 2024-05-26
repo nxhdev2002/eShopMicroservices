@@ -4,7 +4,7 @@ using Basket.API.Basket.GetBasket;
 namespace Basket.API.Basket.StoreBasket
 {
     public record StoreBasketRequest(ShoppingCart Cart);
-    public record StoreBasketResponse(string UserName);
+    public record StoreBasketResponse(string Username);
 
     public class StoreBasketEndpoints : ICarterModule
     {
@@ -17,7 +17,7 @@ namespace Basket.API.Basket.StoreBasket
                 var result = await sender.Send(command);
 
                 var resp = result.Adapt<StoreBasketResponse>();
-                return Results.Created($"/basket/{resp.UserName}", resp);
+                return Results.Created($"/basket/{resp.Username}", resp);
             })
             .WithName("StoreBasket")
             .Produces<GetBasketResponse>(StatusCodes.Status201Created)
