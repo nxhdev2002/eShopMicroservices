@@ -12,3 +12,4 @@ global using BuildingBlocks.Behaviors;
 global using BuildingBlocks.Exceptions.Handler;
 global using Microsoft.Extensions.Caching.Distributed;
 global using System.Text.Json;
+global using static Discount.Grpc.DiscountProtoService;
