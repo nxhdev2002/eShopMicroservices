@@ -30,7 +30,19 @@ services:
     restart: always
     ports:
         - "6379:6379"
-        
+
+  orderdb:
+    container_name: orderdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=Orderdb
+    restart: always
+    ports:
+        - "5434:5432"
+    volumes:
+      - postgres_order:/var/lib/postgresql/data/ 
+    
 
   catalog.api:
     environment:
