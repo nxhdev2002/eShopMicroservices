@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Ordering.Infrastructure.Data;
-
-namespace Ordering.Infrastructure
+﻿namespace Ordering.Infrastructure
 {
     public static class DependencyInjection
     {
@@ -11,7 +6,15 @@ namespace Ordering.Infrastructure
         {
             var connectionString = configuration.GetConnectionString("Database");
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+            // Add scope to container
+            services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+            services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventInterceptor>();
+
+            services.AddDbContext<ApplicationDbContext>((sp, options) =>
+            {
+                options.AddInterceptors(sp.GetRequiredService<ISaveChangesInterceptor>());
+                options.UseNpgsql(connectionString);
+            });
             return services;
         }
     }
