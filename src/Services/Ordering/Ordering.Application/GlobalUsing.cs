@@ -1,7 +1,7 @@
 ﻿namespace Ordering.Application
 {
-    public class Class1
+    internal class GlobalUsing
     {
-
     }
 }
+ 
