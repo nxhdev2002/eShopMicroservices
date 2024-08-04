@@ -10,7 +10,7 @@
         public string State { get; } = default!;
         public string ZipCode { get; } = default!;
 
-        protected Address() 
+        protected Address()
         {
         }
 

@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
-builder.Services.AddDbContext<DiscountContext>(opts => 
+builder.Services.AddDbContext<DiscountContext>(opts =>
         opts.UseSqlite(builder.Configuration.GetConnectionString("Database")));
 
 

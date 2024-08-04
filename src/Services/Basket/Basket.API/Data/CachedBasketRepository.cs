@@ -5,7 +5,7 @@
         public async Task<ShoppingCart> GetBasket(string UserName, CancellationToken cancellationToken = default)
         {
             var cacheBasket = await cache.GetStringAsync(UserName, cancellationToken);
-            if (!string.IsNullOrEmpty(cacheBasket)) 
+            if (!string.IsNullOrEmpty(cacheBasket))
                 return JsonSerializer.Deserialize<ShoppingCart>(cacheBasket)!;
 
             var basket = await repository.GetBasket(UserName, cancellationToken);
