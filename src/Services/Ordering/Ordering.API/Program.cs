@@ -11,7 +11,10 @@ builder.Services
     .AddInfrastructureServices(builder.Configuration)
     .AddApiServices();
 
+builder.AddServiceDefaults();
+builder.AddDefaultHealthChecks();
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline 
 app.UseApiServices();
@@ -20,5 +23,7 @@ if (app.Environment.IsDevelopment())
 {
     await app.InititaliseDatabaseAsync();
 }
+
+app.MapDefaultEndpoints();
 
 app.Run();

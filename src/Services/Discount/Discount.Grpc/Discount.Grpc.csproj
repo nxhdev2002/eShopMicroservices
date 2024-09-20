@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\ServiceDefaults\ServiceDefaults.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<Protobuf Include="Protos\discount.proto" GrpcServices="Server" />
   </ItemGroup>
 </Project>
