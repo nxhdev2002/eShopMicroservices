@@ -1,4 +1,6 @@
-﻿namespace Ordering.Infrastructure
+﻿using Ordering.Application.Data;
+
+namespace Ordering.Infrastructure
 {
     public static class DependencyInjection
     {
@@ -15,6 +17,8 @@
                 options.AddInterceptors(sp.GetRequiredService<ISaveChangesInterceptor>());
                 options.UseNpgsql(connectionString);
             });
+
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             return services;
         }
     }
