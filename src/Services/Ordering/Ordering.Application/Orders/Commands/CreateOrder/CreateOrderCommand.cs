@@ -14,6 +14,6 @@ public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
     {
         RuleFor(x => x.Order.OrderName).NotNull().WithMessage("Name is required");
         RuleFor(x => x.Order.CustomerId).NotNull().WithMessage("CustomerId is required");
-        RuleFor(x => x.Order.OrdersItem).NotNull().WithMessage("OrderItems is required");
+        RuleFor(x => x.Order.OrderItems).NotNull().WithMessage("OrderItems is required");
     }
 }

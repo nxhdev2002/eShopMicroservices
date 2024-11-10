@@ -18,7 +18,7 @@ namespace BuildingBlocks.Behaviors
                 .SelectMany(x => x.Errors)
                 .ToList();
 
-            if (failtures.Any())
+            if (failtures.Count != 0)
             {
                 throw new ValidationException(failtures);
             }

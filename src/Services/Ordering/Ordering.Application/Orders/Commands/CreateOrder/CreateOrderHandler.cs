@@ -28,7 +28,7 @@ public class CreateOrderHandler(
             payment: Payment.Of(orderDto.Payment.CardName, orderDto.Payment.CardNumber, orderDto.Payment.Expiration, orderDto.Payment.Cvv, orderDto.Payment.PaymentMethod)
         );
 
-        foreach (var orderItemDto in orderDto.OrdersItem)
+        foreach (var orderItemDto in orderDto.OrderItems)
         {
             order.Add(ProductId.Of(orderItemDto.ProductId), orderItemDto.Quantity, orderItemDto.Price);
         }
