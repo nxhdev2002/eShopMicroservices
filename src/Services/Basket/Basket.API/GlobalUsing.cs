@@ -13,3 +13,6 @@ global using MediatR;
 global using Microsoft.Extensions.Caching.Distributed;
 global using System.Text.Json;
 global using static Discount.Grpc.DiscountProtoService;
+global using Basket.API.Dtos;
+global using BuildingBlockMessaging.Events;
+global using MassTransit;

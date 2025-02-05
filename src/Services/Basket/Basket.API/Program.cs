@@ -1,3 +1,4 @@
+using BuildingBlockMessaging.MassTransit;
 using HealthChecks.UI.Client;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,6 +38,8 @@ builder.Services.AddGrpcClient<DiscountProtoServiceClient>(option =>
     return handler;
 });
 
+// Async communication services
+builder.Services.AddMassTransit(builder.Configuration);
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddHealthChecks()
