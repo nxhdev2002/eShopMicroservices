@@ -1,4 +1,5 @@
 ﻿using Ordering.Application.Data;
+using Ordering.Domain.Models;
 
 namespace Ordering.Infrastructure.Data
 {
