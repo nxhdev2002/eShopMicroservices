@@ -1,6 +1,6 @@
 ﻿namespace Basket.API.Basket.CheckoutBasket;
 
-public record CheckoutBasketRequest(BasketCheckoutDto Input);
+public record CheckoutBasketRequest(BasketCheckoutDto BasketCheckoutDto);
 
 public record CheckoutBasketResponse(bool IsSuccess);
 
@@ -10,7 +10,7 @@ public class CheckoutBasketEndpoints : ICarterModule
     {
         app.MapPost("/basket/checkout", async (CheckoutBasketRequest request, ISender sender) =>
         {
-            var command = request.Input.Adapt<CheckoutBasketCommand>();
+            var command = request.Adapt<CheckoutBasketCommand>();
             var result = await sender.Send(command);
             var response = result.Adapt<CheckoutBasketResponse>();
             return Results.Ok(response);

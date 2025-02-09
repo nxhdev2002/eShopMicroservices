@@ -2,16 +2,19 @@ version: '3.4'
 
 services:
   catalogdb:
-    image: postgres
+    image: postgres:17
 
   basketdb:
-    image: postgres
+    image: postgres:16
 
   distributedcache:
     image: redis
 
   orderdb:
-    image: postgres
+    image: postgres:16
+
+  messagebroker:
+    image: rabbitmq:management
 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
@@ -30,10 +33,17 @@ services:
     build:
       context: .
       dockerfile: Services/Discount/Discount.Grpc/Dockerfile
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}orderingapi
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
+
 volumes:
   postgres_catalog:
   postgres_basket:
   postgres_order:
+
 
 
 
